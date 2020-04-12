@@ -1,0 +1,13 @@
+fideid = dataset:players
+name = dataset:players
+country = dataset:players
+sex = dataset:players
+title = dataset:players
+w_title = dataset:players
+o_title = dataset:players
+foa_title = dataset:players
+rating = dataset:players
+games = dataset:players
+k = dataset:players
+birthday = dataset:players
+flag = dataset:players

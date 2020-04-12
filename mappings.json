@@ -1,0 +1,22 @@
+{
+    "mappings" : {
+        "rating" : {
+            "properties" : {
+                "birthday" : { "type" : "long" },
+                "country_code" : { "type" : "keyword" },
+                "country" : { "type" : "text" },
+                "fideid" : { "type" : "long" },
+                "flag" : { "type" : "keyword" },
+                "foa_title" : { "type" : "keyword" },
+                "games" : { "type" : "short" },
+                "k" : { "type" : "short" },
+                "name" : { "type" : "text" },
+                "o_title" : { "type" : "keyword" },
+                "rating" : { "type" : "short" },
+                "sex" : { "type" : "keyword" },
+                "title" : { "type" : "keyword" },
+                "w_title" : { "type" : "keyword" }
+            }
+        }
+    }
+}
