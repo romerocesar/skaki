@@ -23,12 +23,12 @@ def fetch(date=None):
     '''
     today = datetime.date.today()
     year, month = today.year, today.month
-    logger.debug(f"downloading ratings for {year}-{month}...")
+    directory = tempfile.gettempdir()
+    path = os.path.join(directory, f'fide-{year}-{month}.zip')
+    logger.debug(f"downloading ratings for {year}-{month} into {path}")
     URL = 'http://ratings.fide.com/download/players_list_xml.zip'
     response = requests.get(URL)
     logger.debug(response)
-    directory = tempfile.gettempdir()
-    path = os.path.join(directory, f'fide-{year}-{month}.zip')
     with open(path, 'wb') as fp:
         fp.write(response.content)
 
@@ -36,17 +36,18 @@ def fetch(date=None):
     return path
 
 
-def load(path):
-    '''loads fide ratings from a path. unzip, then read the XML format
-    published by FIDE since the TXT file is not in any easily parseable format
-
-    return: a pandas dataframe with all the ratings
-
-    '''
+@click.command(name='index')
+@click.option('--file', help='file to read ratings from. must be zip or xml obtained from fide.com')
+def index(path):
+    '''loads ratings from FIDE and indexes them into an elasticsearch cluster'''
+    # fetch if path not local or not provided
+    # load ratings into a pandas df with transformations
+    # add all ratings into the index corresponding to the month being loaded
     pass
 
 
-if __name__ == '__main__':
+def main():
     group = click.Group()
     group.add_command(fetch)
+    group.add_command(index)
     group()
