@@ -23,12 +23,18 @@ def parse_xml(ratings):
         rating = dataset:players
         games = dataset:players
         k = dataset:players
+        rapid_rating = dataset:players
+        rapid_games = dataset:players
+        rapid_k = dataset:players
+        blitz_rating = dataset:players
+        blitz_games = dataset:players
+        blitz_k = dataset:players
         birthday = dataset:players
         flag = dataset:players
     '''
     records = xmldataset.parse_using_profile(ratings, profile)
     df = pd.DataFrame.from_records(records['players'])
-    logger.info(f'parsed {len(records)} from XML')
+    logger.info(f'parsed {len(df)} ratings from XML')
     return df
 
 

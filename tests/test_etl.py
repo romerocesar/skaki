@@ -22,12 +22,23 @@ def test_country_names():
 
 def test_load():
     # arrange
-    path = 'fide-2020-4.zip'
+    path = 'tests/fide-202004-small.zip'
     # act
     df = etl.load(path)
     # assert
     # check number of records and cols
-    assert 0
+    assert len(df.columns) == 19
+    assert len(df) == 47
+
+
+def test_parse_xml():
+    # arrange
+    fp = open('tests/fide-202004-small.xml')
+    # act
+    df = etl.parse_xml(fp.read())
+    # assert
+    assert len(df.columns) == 19
+    assert len(df) == 47
 
 
 def test_bad_zipfile():
